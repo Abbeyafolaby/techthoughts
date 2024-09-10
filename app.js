@@ -1,5 +1,6 @@
 import express from "express";
 import expressEjsLayouts from "express-ejs-layouts";
+import methodOverride from  "method-override";
 import main from "./server/routes/main.js"
 import admin from "./server/routes/admin.js"
 import connectDB from "./server/config/db.js";
@@ -17,6 +18,7 @@ connectDB();
 app.use(express.urlencoded({extended: true}))
 app.use(express.json())
 app.use(cookieParser())
+app.use(methodOverride("_method"))
 app.use(session({
     secret: "keyboard cat",
     resave: false,
